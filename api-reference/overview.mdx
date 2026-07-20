@@ -1,0 +1,30 @@
+---
+title: "API 接口概览"
+description: "浏览 MaxAPI 的接口规范和调用约定。"
+---
+
+MaxAPI 的接口参考由 OpenAPI 定义自动生成，包含请求参数、响应结构和交互式调试工具。
+
+## 基础信息
+
+| 项目 | 值 |
+| --- | --- |
+| Base URL | `https://api.maxapi.ai` |
+| 默认认证 | `Authorization: Bearer YOUR_API_KEY` |
+| 常用内容类型 | `application/json`、`multipart/form-data` |
+
+## 接口分类
+
+- **OpenAI 兼容接口**：聊天补全、文本补全、图像、嵌入和音频。
+- **图像接口**：Flux、Stable Diffusion、Midjourney 和其他绘图模型。
+- **视频接口**：Veo、Wan、Seedance、Vidu、Hailuo、Sora 和 Luma。
+- **音乐接口**：Suno 音乐生成、歌词和任务查询。
+- **厂商原生接口**：保留特定供应商的路径和参数格式。
+
+<Note>
+  同一路径可能服务于多个模型。具体支持的模型 ID、价格和可用状态请以 MaxAPI 控制台为准。
+</Note>
+
+## 使用 API Playground
+
+在接口页面填写参数后即可生成请求示例。生产环境请从服务端调用 API，不要在浏览器中暴露 API Key。

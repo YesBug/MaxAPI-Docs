@@ -1,0 +1,50 @@
+---
+title: "异步任务"
+description: "创建并轮询耗时较长的生成任务。"
+---
+
+视频、部分图像和音乐模型采用异步任务模式。创建接口会先返回任务 ID，生成结果随后才可用。
+
+<Steps>
+  <Step title="创建任务">
+    调用目标模型的生成接口，并保存响应中的任务 ID。不同接口可能使用 `id`、`task_id` 或 `taskId` 字段。
+  </Step>
+  <Step title="查询任务">
+    使用对应的任务查询接口轮询状态。建议从 2 至 5 秒的间隔开始，并使用指数退避。
+  </Step>
+  <Step title="读取结果">
+    当状态变为成功时，读取响应中的资源 URL。资源链接可能有有效期，请及时下载或转存。
+  </Step>
+</Steps>
+
+## 推荐的轮询策略
+
+```javascript
+const terminalStates = new Set(["succeeded", "success", "completed", "failed", "cancelled"]);
+let delay = 2000;
+
+while (true) {
+  const response = await fetch(`TASK_QUERY_URL`, {
+    headers: { Authorization: `Bearer ${process.env.MAXAPI_API_KEY}` },
+  });
+  const task = await response.json();
+
+  if (terminalStates.has(String(task.status).toLowerCase())) {
+    return task;
+  }
+
+  await new Promise((resolve) => setTimeout(resolve, delay));
+  delay = Math.min(delay * 1.5, 10000);
+}
+```
+
+<Warning>
+  各模型的状态字段和值并不完全一致。请以创建接口和查询接口的响应定义为准，不要跨模型复用未经适配的判断逻辑。
+</Warning>
+
+## 生产环境建议
+
+- 为轮询设置最大等待时间，避免任务永久占用工作线程。
+- 对 `429` 和 `5xx` 响应执行带随机抖动的指数退避。
+- 保存任务 ID、模型名称和创建时间，便于恢复中断的任务。
+- 不要把临时资源 URL 当作永久存储地址。

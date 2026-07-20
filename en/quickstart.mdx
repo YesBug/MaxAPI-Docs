@@ -1,0 +1,85 @@
+---
+title: "Quickstart"
+description: "Send your first chat request with MaxAPI."
+---
+
+This guide uses the OpenAI-compatible Chat Completions API. You need a MaxAPI account and API key before you begin.
+
+<Steps>
+  <Step title="Create an API key">
+    Sign in to MaxAPI and create an API key. Keys usually begin with `sk-`.
+
+    <Warning>
+      Store the key immediately. Never expose it in browser code, mobile applications, or public repositories.
+    </Warning>
+  </Step>
+
+  <Step title="Send a request">
+    Replace `YOUR_API_KEY` and `YOUR_MODEL_ID` with your API key and a model ID from the model list.
+
+    <CodeGroup>
+    ```bash cURL
+    curl https://api.maxapi.ai/v1/chat/completions \
+      -H "Authorization: Bearer YOUR_API_KEY" \
+      -H "Content-Type: application/json" \
+      -d '{
+        "model": "YOUR_MODEL_ID",
+        "messages": [
+          {"role": "user", "content": "Introduce MaxAPI in one sentence."}
+        ]
+      }'
+    ```
+
+    ```python Python
+    from openai import OpenAI
+
+    client = OpenAI(
+        api_key="YOUR_API_KEY",
+        base_url="https://api.maxapi.ai/v1",
+    )
+
+    response = client.chat.completions.create(
+        model="YOUR_MODEL_ID",
+        messages=[
+            {"role": "user", "content": "Introduce MaxAPI in one sentence."}
+        ],
+    )
+
+    print(response.choices[0].message.content)
+    ```
+
+    ```javascript Node.js
+    import OpenAI from "openai";
+
+    const client = new OpenAI({
+      apiKey: "YOUR_API_KEY",
+      baseURL: "https://api.maxapi.ai/v1",
+    });
+
+    const response = await client.chat.completions.create({
+      model: "YOUR_MODEL_ID",
+      messages: [
+        { role: "user", content: "Introduce MaxAPI in one sentence." },
+      ],
+    });
+
+    console.log(response.choices[0].message.content);
+    ```
+    </CodeGroup>
+  </Step>
+
+  <Step title="Read the response">
+    The generated text is available at `choices[0].message.content`.
+  </Step>
+</Steps>
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="Authentication" icon="key" href="/en/guides/authentication">
+    Manage API keys safely.
+  </Card>
+  <Card title="Asynchronous tasks" icon="clock" href="/en/guides/async-tasks">
+    Generate images, videos, and music.
+  </Card>
+</CardGroup>

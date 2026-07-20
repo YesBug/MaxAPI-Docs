@@ -1,0 +1,39 @@
+---
+title: "Authentication"
+description: "Authenticate MaxAPI requests with an API key."
+---
+
+MaxAPI authenticates requests with API keys. Most endpoints expect a Bearer token in the `Authorization` header:
+
+```http
+Authorization: Bearer YOUR_API_KEY
+```
+
+```bash
+curl https://api.maxapi.ai/v1/chat/completions \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"model":"YOUR_MODEL_ID","messages":[{"role":"user","content":"Hello"}]}'
+```
+
+<Note>
+  Some provider-native endpoints use a different authentication format. Follow the header definition on the endpoint page.
+</Note>
+
+## Protect your keys
+
+- Store API keys in server-side environment variables or a secrets manager.
+- Do not include keys in frontend code, mobile applications, or public repositories.
+- Create separate keys for each application and environment.
+- Revoke and replace a key immediately if you suspect exposure.
+
+```bash
+export MAXAPI_API_KEY="YOUR_API_KEY"
+```
+
+## Authentication errors
+
+| Status | Cause | Resolution |
+| --- | --- | --- |
+| `401` | The API key is missing, invalid, or revoked | Check the request header and use an active key |
+| `403` | The key cannot access the requested model or endpoint | Check the account and model permissions |

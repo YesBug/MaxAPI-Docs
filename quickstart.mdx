@@ -1,47 +1,107 @@
 ---
-title: "Quickstart"
-description: "Begin with a guide on the fastest path to a successful outcome"
+title: "快速开始"
+description: "使用 MaxAPI 完成第一个聊天请求。"
 ---
 
-Describe how someone begins using your product. What is the first thing they need to do? Are there any prerequisites?
-
-A quickstart should take someone from zero to using your product. They'll get a quick win and a sense of what they can accomplish.
-
-## Prerequisites
-
-Before you begin, you must have:
-
-- Requirement one (for example, Node.js 18+, a free account, an API key)
-- Requirement two (for example, a compatible device, a compatible browser, a compatible operating system)
-
-## Get started
+本指南使用 OpenAI 兼容的聊天补全接口。开始前，你需要一个 MaxAPI 账户和 API Key。
 
 <Steps>
-  <Step title="Install">
-    Describe how to install your product or sign up.
+  <Step title="创建 API Key">
+    登录 MaxAPI 控制台并创建 API Key。密钥通常以 `sk-` 开头。
 
-    ```bash
-    npm install your-package
-    ```
+    <Warning>
+      API Key 只会完整显示有限次数。请立即保存，并且不要在浏览器代码或公开仓库中暴露它。
+    </Warning>
   </Step>
-  <Step title="Configure">
-    Describe any setup or configuration needed before first use.
 
-    ```bash
-    your-cli init
+  <Step title="发送请求">
+    将 `YOUR_API_KEY` 和 `YOUR_MODEL_ID` 替换为你的 API Key 和控制台中显示的模型 ID。
+
+    <CodeGroup>
+    ```bash cURL
+    curl https://api.maxapi.ai/v1/chat/completions \
+      -H "Authorization: Bearer YOUR_API_KEY" \
+      -H "Content-Type: application/json" \
+      -d '{
+        "model": "YOUR_MODEL_ID",
+        "messages": [
+          {"role": "user", "content": "用一句话介绍 MaxAPI"}
+        ]
+      }'
     ```
-  </Step>
-  <Step title="Run it">
-    Show the first thing a user does to see it working.
 
-    ```bash
-    your-cli start
+    ```python Python
+    from openai import OpenAI
+
+    client = OpenAI(
+        api_key="YOUR_API_KEY",
+        base_url="https://api.maxapi.ai/v1",
+    )
+
+    response = client.chat.completions.create(
+        model="YOUR_MODEL_ID",
+        messages=[
+            {"role": "user", "content": "用一句话介绍 MaxAPI"}
+        ],
+    )
+
+    print(response.choices[0].message.content)
+    ```
+
+    ```javascript Node.js
+    import OpenAI from "openai";
+
+    const client = new OpenAI({
+      apiKey: "YOUR_API_KEY",
+      baseURL: "https://api.maxapi.ai/v1",
+    });
+
+    const response = await client.chat.completions.create({
+      model: "YOUR_MODEL_ID",
+      messages: [
+        { role: "user", content: "用一句话介绍 MaxAPI" },
+      ],
+    });
+
+    console.log(response.choices[0].message.content);
+    ```
+    </CodeGroup>
+  </Step>
+
+  <Step title="读取响应">
+    成功响应中的文本位于 `choices[0].message.content`。
+
+    ```json
+    {
+      "id": "chatcmpl-abc123",
+      "object": "chat.completion",
+      "choices": [
+        {
+          "index": 0,
+          "message": {
+            "role": "assistant",
+            "content": "MaxAPI 让你通过统一接口调用多种 AI 模型。"
+          },
+          "finish_reason": "stop"
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 12,
+        "completion_tokens": 18,
+        "total_tokens": 30
+      }
+    }
     ```
   </Step>
 </Steps>
 
-<Tip>
-  Give people a way to get help. This could be a link to a support page, a chat with a customer support agent, or a forum for your product.
+## 下一步
 
-  Example: Need help? Reach out to us at [support@yourcompany.com](mailto:support@yourcompany.com).
-</Tip>
+<CardGroup cols={2}>
+  <Card title="配置身份认证" icon="key" href="/guides/authentication">
+    安全地管理和传递 API Key。
+  </Card>
+  <Card title="处理异步任务" icon="clock" href="/guides/async-tasks">
+    创建并轮询视频、图像或音乐任务。
+  </Card>
+</CardGroup>

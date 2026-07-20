@@ -1,0 +1,30 @@
+---
+title: "API overview"
+description: "Explore MaxAPI endpoints and request conventions."
+---
+
+The MaxAPI reference is generated from an OpenAPI document. Each endpoint page includes parameters, response schemas, code examples, and an interactive playground.
+
+## Basics
+
+| Item | Value |
+| --- | --- |
+| Base URL | `https://api.maxapi.ai` |
+| Default authentication | `Authorization: Bearer YOUR_API_KEY` |
+| Common content types | `application/json`, `multipart/form-data` |
+
+## API categories
+
+- **OpenAI-compatible APIs** cover chat, completions, images, embeddings, and audio.
+- **Image APIs** include Midjourney, Stability AI, Ideogram, and other providers.
+- **Video APIs** include Google Veo, Alibaba Wan, ByteDance Seedance, Vidu, MiniMax, OpenAI Sora, and Luma.
+- **Music APIs** include Suno music generation, lyrics, uploads, and task queries.
+- **Provider-native APIs** preserve provider-specific paths and parameter formats.
+
+<Note>
+  A single endpoint may support multiple models. Use the MaxAPI model list for current model IDs, pricing, and availability.
+</Note>
+
+## API playground
+
+Use an endpoint page to enter parameters and generate a request example. Call MaxAPI from your server in production so your API key is never exposed in a browser.

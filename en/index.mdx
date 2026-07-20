@@ -1,0 +1,60 @@
+---
+title: "MaxAPI developer documentation"
+description: "Access text, image, video, audio, and music models through one API."
+---
+
+MaxAPI provides a unified API for AI models. You can reuse the OpenAI SDK or call provider-native endpoints when you need model-specific features.
+
+<CardGroup cols={2}>
+  <Card title="Quickstart" icon="rocket" href="/en/quickstart">
+    Get an API key and send your first request in five minutes.
+  </Card>
+  <Card title="API Reference" icon="brackets-curly" href="/en/api-reference/overview">
+    Explore parameters, response schemas, and interactive examples.
+  </Card>
+  <Card title="Authentication" icon="key" href="/en/guides/authentication">
+    Learn how to send and protect your API key.
+  </Card>
+  <Card title="Asynchronous tasks" icon="clock" href="/en/guides/async-tasks">
+    Create and monitor image, video, and music generation tasks.
+  </Card>
+</CardGroup>
+
+## Base URL
+
+Send API requests to:
+
+```text
+https://api.maxapi.ai
+```
+
+Most text models are compatible with the OpenAI API. Change the base URL, API key, and model ID to migrate an existing application.
+
+<Tip>
+  Model availability changes over time. Use the model list in the MaxAPI console as the source of truth.
+</Tip>
+
+## Supported capabilities
+
+<CardGroup cols={3}>
+  <Card title="Text and chat" icon="messages">Chat completions, text completions, and embeddings.</Card>
+  <Card title="Images" icon="image">DALL·E, Flux, Stable Diffusion, Midjourney, and more.</Card>
+  <Card title="Video" icon="video">Veo, Wan, Sora, Vidu, Luma, Hailuo, and more.</Card>
+  <Card title="Audio" icon="waveform">Text-to-speech, transcription, and translation.</Card>
+  <Card title="Music" icon="music">Music and lyrics generation with asynchronous task support.</Card>
+  <Card title="Native formats" icon="code">Provider-compatible request formats for advanced features.</Card>
+</CardGroup>
+
+## Choose an API format
+
+<AccordionGroup>
+  <Accordion title="OpenAI-compatible format">
+    Use this format for chat, completions, embeddings, images, and audio. Existing OpenAI applications usually require only configuration changes.
+  </Accordion>
+  <Accordion title="Unified asynchronous format">
+    Use this format for operations that take longer to complete. Create a task, then poll its status with the returned task ID.
+  </Accordion>
+  <Accordion title="Provider-native format">
+    Use a native format when you need advanced provider-specific parameters or want to migrate an existing provider integration.
+  </Accordion>
+</AccordionGroup>

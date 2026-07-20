@@ -1,0 +1,41 @@
+---
+title: "Asynchronous tasks"
+description: "Create and monitor long-running generation tasks."
+---
+
+Video, music, and some image models use asynchronous tasks. The create endpoint returns a task ID before the generated asset is ready.
+
+<Steps>
+  <Step title="Create a task">
+    Call the generation endpoint and save the returned task ID. Depending on the provider, the field may be named `id`, `task_id`, or `taskId`.
+  </Step>
+  <Step title="Poll the task">
+    Call the matching task endpoint until the task reaches a terminal state. Start with a two-to-five-second interval and use exponential backoff.
+  </Step>
+  <Step title="Read the result">
+    Read the asset URL after the task succeeds. Download or copy the asset promptly because generated URLs may expire.
+  </Step>
+</Steps>
+
+## Recommended polling strategy
+
+```javascript
+const terminalStates = new Set(["succeeded", "success", "completed", "failed", "cancelled"]);
+let delay = 2000;
+
+while (true) {
+  const response = await fetch("TASK_QUERY_URL", {
+    headers: { Authorization: `Bearer ${process.env.MAXAPI_API_KEY}` },
+  });
+  const task = await response.json();
+
+  if (terminalStates.has(String(task.status).toLowerCase())) return task;
+
+  await new Promise((resolve) => setTimeout(resolve, delay));
+  delay = Math.min(delay * 1.5, 10000);
+}
+```
+
+<Warning>
+  Status fields and values differ between providers. Follow the schema for the create and query endpoints instead of sharing unadapted status logic across models.
+</Warning>

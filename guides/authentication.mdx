@@ -1,0 +1,60 @@
+---
+title: "身份认证"
+description: "使用 API Key 认证 MaxAPI 请求。"
+---
+
+MaxAPI 使用 API Key 认证请求。对于大多数接口，请在 `Authorization` 请求头中使用 Bearer 格式：
+
+```http
+Authorization: Bearer YOUR_API_KEY
+```
+
+```bash
+curl https://api.maxapi.ai/v1/chat/completions \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"model":"YOUR_MODEL_ID","messages":[{"role":"user","content":"你好"}]}'
+```
+
+<Note>
+  少数厂商原生接口使用不同的认证格式。请以对应接口页面显示的请求头为准。
+</Note>
+
+## 安全建议
+
+- 将 API Key 保存在服务端环境变量或密钥管理服务中。
+- 不要把 API Key 写入前端代码、移动应用或公开仓库。
+- 为不同环境和应用创建独立密钥。
+- 怀疑密钥泄漏时，立即撤销并重新创建密钥。
+
+```bash
+export MAXAPI_API_KEY="YOUR_API_KEY"
+```
+
+<CodeGroup>
+```python Python
+import os
+from openai import OpenAI
+
+client = OpenAI(
+    api_key=os.environ["MAXAPI_API_KEY"],
+    base_url="https://api.maxapi.ai/v1",
+)
+```
+
+```javascript Node.js
+import OpenAI from "openai";
+
+const client = new OpenAI({
+  apiKey: process.env.MAXAPI_API_KEY,
+  baseURL: "https://api.maxapi.ai/v1",
+});
+```
+</CodeGroup>
+
+## 认证错误
+
+| 状态码 | 原因 | 处理方式 |
+| --- | --- | --- |
+| `401` | API Key 缺失、无效或已撤销 | 检查请求头并更换有效密钥 |
+| `403` | 密钥没有访问该模型或接口的权限 | 检查账户权限和模型可用范围 |

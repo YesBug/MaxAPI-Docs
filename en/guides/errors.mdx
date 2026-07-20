@@ -1,0 +1,22 @@
+---
+title: "Error handling"
+description: "Handle common HTTP errors, rate limits, and provider failures."
+---
+
+Check the HTTP status first, then read the error message in the response body. Error object shapes may differ between providers.
+
+| Status | Meaning | Recommended action |
+| --- | --- | --- |
+| `400` | Invalid request | Check required fields, data types, and the model ID |
+| `401` | Authentication failed | Check the `Authorization` header and API key |
+| `403` | Access denied | Check account permissions, model access, and content policies |
+| `404` | Endpoint, model, or task not found | Check the base URL, path, model ID, and task ID |
+| `429` | Rate limit or insufficient credit | Check limits and balance, then retry with backoff |
+| `500`–`599` | Temporary service or provider error | Retry idempotent requests a limited number of times |
+
+## Retry guidelines
+
+- Do not automatically retry invalid requests or authentication failures.
+- Use exponential backoff with jitter for `429`, `502`, `503`, and `504` responses.
+- Confirm that a create endpoint supports idempotency before retrying it.
+- Log the request ID, status, model, and error message. Never log the API key.

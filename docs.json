@@ -1,53 +1,746 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "Mintlify Starter Kit",
+  "name": "MaxAPI Docs",
+  "description": "MaxAPI 开发者文档",
   "colors": {
     "primary": "#16A34A",
-    "light": "#07C983",
+    "light": "#22C55E",
     "dark": "#15803D"
   },
   "favicon": "/favicon.svg",
-  "navigation": {
-    "pages": [
-      {
-        "group": "Getting Started",
-        "pages": [
-          "index",
-          "quickstart"
-        ]
-      }
-    ],
-    "global": {
-      "anchors": [
-        {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
-          "icon": "book-open-cover"
-        },
-        {
-          "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
-          "icon": "newspaper"
-        }
-      ]
-    }
-  },
   "logo": {
     "light": "/logo/light.svg",
     "dark": "/logo/dark.svg"
   },
-  "navbar": {
-    "links": [
+  "navigation": {
+    "interaction": {
+      "drilldown": false
+    },
+    "languages": [
       {
-        "label": "Support",
-        "href": "mailto:hi@mintlify.com"
+        "language": "cn",
+        "default": true,
+        "navbar": {
+          "links": [
+            {
+              "label": "模型列表",
+              "href": "https://api.maxapi.ai/modelmak"
+            }
+          ],
+          "primary": {
+            "type": "button",
+            "label": "获取KEY",
+            "href": "http://api.maxapi.ai"
+          }
+        },
+        "tabs": [
+          {
+            "tab": "文档",
+            "icon": "book-open",
+            "groups": [
+              {
+                "group": "开始使用",
+                "pages": [
+                  "index",
+                  "quickstart"
+                ]
+              },
+              {
+                "group": "开发指南",
+                "pages": [
+                  "guides/authentication",
+                  "guides/async-tasks",
+                  "guides/errors"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "API Reference",
+            "icon": "square-terminal",
+            "groups": [
+              {
+                "group": "接口说明",
+                "pages": [
+                  "api-reference/overview"
+                ]
+              },
+              {
+                "group": "按厂商浏览",
+                "pages": [
+                  {
+                    "group": "Google",
+                    "expanded": false,
+                    "openapi": "api-reference/openapi.json",
+                    "pages": [
+                      "POST /v1beta/models/gemini-2.5-flash-image:generateContent",
+                      "GET /v1/videos/{task_id}/content",
+                      "POST /vertex/v1/publishers/google/models/{model}:predictLongRunning",
+                      "POST /vertex/v1/publishers/google/models/{model}:fetchPredictOperation",
+                      "POST /aistudio/v1beta/models/{model}:predictLongRunning",
+                      "POST /aistudio/v1beta/models/{model}:fetchPredictOperation",
+                      "GET /aistudio/v1beta/files/am6emvv7ekgo:download",
+                      "POST /v1/video/generations",
+                      "GET /v1/tasks/id",
+                      "POST /veo/v1/api/video/submit",
+                      "GET /veo/v1/api/video/status/{taskId}",
+                      "GET /v1/videos/{id}",
+                      "GET /v1/videos/{id}/content",
+                      "POST /v2/videos/generations",
+                      "GET /v2/videos/generations/{task_id}"
+                    ]
+                  },
+                  {
+                    "group": "字节跳动",
+                    "expanded": false,
+                    "openapi": "api-reference/openapi.json",
+                    "pages": [
+                      "POST /seedance/api/v3/contents/generations/tasks",
+                      "GET /seedance/api/v3/contents/generations/tasks/{id}"
+                    ]
+                  },
+                  {
+                    "group": "阿里云",
+                    "expanded": false,
+                    "openapi": "api-reference/openapi.json",
+                    "pages": [
+                      "POST /v1/images/edits",
+                      "POST /wan/api/v1/services/aigc/video-generation/video-synthesis",
+                      "POST /wan/api/v1/services/aigc/text2video/text-to-video",
+                      "POST /wan/api/v1/services/aigc/image2video/image-to-video",
+                      "GET /wan/api/v1/tasks/{task_id}"
+                    ]
+                  },
+                  {
+                    "group": "快手可灵",
+                    "expanded": false,
+                    "openapi": "api-reference/openapi.json",
+                    "pages": [
+                      "POST /kling/v1/images/generations",
+                      "POST /kling/v1/videos/text2video",
+                      "POST /kling/v1/videos/image2video",
+                      "GET /kling/v1/{action}/{action2}/{task_id}"
+                    ]
+                  },
+                  {
+                    "group": "Vidu",
+                    "expanded": false,
+                    "openapi": "api-reference/openapi.json",
+                    "pages": [
+                      "POST /vidu/ent/v2/img2video",
+                      "POST /vidu/ent/v2/text2video",
+                      "POST /ent/v2/reference2video",
+                      "POST /ent/v2/start-end2video",
+                      "POST /ent/v2/template",
+                      "POST /ent/v2/template-story",
+                      "POST /ent/v2/reference2image",
+                      "POST /ent/v2/text2audio",
+                      "POST /ent/v2/timing2audio",
+                      "POST /ent/v2/img2video-prompt-recommendation",
+                      "POST /ent/v2/lip-sync",
+                      "POST /ent/v2/extend",
+                      "POST /ent/v2/upscale-new",
+                      "GET /vidu/ent/v2/tasks/{id}/creations",
+                      "POST /ent/v2/tasks/{id}/cancel",
+                      "GET /ent/v2/credits"
+                    ]
+                  },
+                  {
+                    "group": "MiniMax",
+                    "expanded": false,
+                    "openapi": "api-reference/openapi.json",
+                    "pages": [
+                      "POST /hailuo/v1/video_generation",
+                      "GET /hailuo/v1/query/video_generation",
+                      "GET /hailuo/v1/files/retrieve"
+                    ]
+                  },
+                  {
+                    "group": "Midjourney",
+                    "expanded": false,
+                    "openapi": "api-reference/openapi.json",
+                    "pages": [
+                      "POST /mj/insight-face/swap",
+                      "POST /mj/submit/action",
+                      "POST /mj/submit/blend",
+                      "POST /mj/submit/describe",
+                      "POST /mj/submit/imagine",
+                      "POST /mj/submit/modal",
+                      "POST /mj/submit/shorten",
+                      "GET /mj/task/list",
+                      "POST /mj/task/list-by-condition",
+                      "POST /mj/task/query",
+                      "GET /mj/task/queue",
+                      "POST /mj/task/{id}/cancel",
+                      "GET /mj/task/{id}/fetch",
+                      "GET /mj/task/{id}/image-seed",
+                      "POST /mj-fast/mj/submit/video",
+                      "POST /mj-relax/mj/submit/video",
+                      "GET /mj/task/42a28dda-dc7a-4186-ac86-6e16c1fcef17/fetch"
+                    ]
+                  },
+                  {
+                    "group": "Suno",
+                    "expanded": false,
+                    "openapi": "api-reference/openapi.json",
+                    "pages": [
+                      "POST /suno/v1/music",
+                      "GET /suno/v1/music/id",
+                      "POST /suno/v1/v3.0/music",
+                      "GET /suno/v1/v3.0/music/id",
+                      "POST /suno/v2/uploads/audio",
+                      "POST /suno/v2/generate",
+                      "GET /suno/v2/feed",
+                      "GET /suno/v1/v3.0/lyrics/id",
+                      "POST /suno/v1/v3.0/lyrics",
+                      "POST /suno/submit/music",
+                      "GET /suno/fetch/{task_id}",
+                      "POST /suno/uploads/audio-url"
+                    ]
+                  },
+                  {
+                    "group": "Luma AI",
+                    "expanded": false,
+                    "openapi": "api-reference/openapi.json",
+                    "pages": [
+                      "POST /luma-vip/luma/v1/generations",
+                      "GET /luma-vip/luma/v1/task",
+                      "POST /luma/v1/generations",
+                      "GET /luma/v1/task",
+                      "POST /luma/v2/generations",
+                      "GET /luma/v2/generations/task_id",
+                      "POST /luma/v2/generations/task_id/extend",
+                      "GET /luma/v2/generations/task_id/download_video_url"
+                    ]
+                  },
+                  {
+                    "group": "Stability AI",
+                    "expanded": false,
+                    "openapi": "api-reference/openapi.json",
+                    "pages": [
+                      "POST /sd/v2beta/stable-image/generate/ultra",
+                      "POST /sd/v2beta/stable-image/generate/core",
+                      "POST /sd/v2beta/stable-image/generate/sd3",
+                      "POST /sd/v1/generation/{engine_id}/text-to-image"
+                    ]
+                  },
+                  {
+                    "group": "Fish Audio",
+                    "expanded": false,
+                    "openapi": "api-reference/openapi.json",
+                    "pages": [
+                      "POST /fish/v1/tts",
+                      "POST /fish/v1/asr"
+                    ]
+                  },
+                  {
+                    "group": "Ideogram",
+                    "expanded": false,
+                    "openapi": "api-reference/openapi.json",
+                    "pages": [
+                      "POST /ideogram/generate",
+                      "POST /ideogram/remix",
+                      "POST /ideogram/upscale",
+                      "POST /ideogram/describe"
+                    ]
+                  },
+                  {
+                    "group": "Runway",
+                    "expanded": false,
+                    "openapi": "api-reference/openapi.json",
+                    "pages": [
+                      "POST /runwayml/v1/image_to_video",
+                      "POST /runwayml/v1/character_performance",
+                      "POST /runwayml/v1/video_to_video"
+                    ]
+                  },
+                  {
+                    "group": "MewXAI",
+                    "expanded": false,
+                    "openapi": "api-reference/openapi.json",
+                    "pages": [
+                      "POST /api/v1/images/neuralstyle/generate",
+                      "POST /api/v1/images/generate",
+                      "POST /api/v1/images/shadow/generate",
+                      "POST /api/v1/mx/validate/checkPayload",
+                      "POST /api/v1/mx/images/computed",
+                      "POST /api/v1/mx/images/generate",
+                      "GET /api/v1/mx/images/modelList",
+                      "GET /api/v1/mx/images/extraList",
+                      "POST /api/v1/mx/images/cute/generate",
+                      "GET /api/v1/mx/images/cute/extraList",
+                      "POST /api/xxx/xxx",
+                      "GET /api/v1/images/detail",
+                      "GET /api/v1/user/count",
+                      "GET /api/v1/template/list",
+                      "GET /api/v1/model/list",
+                      "POST /api/v1/images/cute/generate"
+                    ]
+                  },
+                  {
+                    "group": "佐糖",
+                    "expanded": false,
+                    "openapi": "api-reference/openapi.json",
+                    "pages": [
+                      "POST /api/tasks/visual/segmentation",
+                      "GET /api/tasks/visual/imgcompress/task_id",
+                      "GET /api/tasks/visual/segmentation/task_id",
+                      "POST /api/tasks/visual/scale",
+                      "GET /api/tasks/visual/scale/task_id",
+                      "POST /api/tasks/visual/inpaint",
+                      "GET /api/tasks/visual/inpaint/task_id",
+                      "POST /api/tasks/visual/r-background",
+                      "GET /api/tasks/visual/r-background/task_id",
+                      "POST /api/tasks/visual/idphoto",
+                      "GET /api/tasks/visual/idphoto/task_id",
+                      "POST /api/tasks/visual/colorization",
+                      "GET /api/tasks/visual/colorization/task_id",
+                      "POST /api/tasks/visual/imgcompress",
+                      "POST /api/tasks/document/ocr",
+                      "GET /api/tasks/document/ocr/task_id",
+                      "POST /api/tasks/visual/correction",
+                      "GET /api/tasks/visual/correction/task_id"
+                    ]
+                  },
+                  {
+                    "group": "PPT 服务",
+                    "expanded": false,
+                    "openapi": "api-reference/openapi.json",
+                    "pages": [
+                      "POST /apps/ppt-create",
+                      "GET /apps/ppt-result",
+                      "POST /apps/ppt-structure",
+                      "POST /apps/ppt-cover",
+                      "POST /apps/ppt-recover",
+                      "POST /apps/ppt-page",
+                      "POST /apps/ppt-create-file",
+                      "POST /apps/ppt-create-thesis",
+                      "POST /apps/ppt-create-task",
+                      "POST /apps/ppt-note",
+                      "GET /apps/ppt-download",
+                      "POST /api/user/createApiToken",
+                      "POST /api/ppt/generateContent",
+                      "GET /api/ppt/xxx",
+                      "POST /api/ppt/parseFileData",
+                      "POST /api/ppt/generateOutline",
+                      "POST /api/ppt/templates",
+                      "POST /api/ppt/randomTemplates",
+                      "POST /api/ppt/generatePptx",
+                      "POST /api/ppt/directGeneratePptx",
+                      "POST /api/ppt/listPptx",
+                      "GET /api/ppt/loadPptx",
+                      "POST /api/ppt/downloadPptx",
+                      "POST /api/ppt/updatePptxAttr",
+                      "POST /api/ppt/savePptx",
+                      "POST /api/ppt/delete",
+                      "GET /api/ppt/asyncPptInfo",
+                      "POST /api/pptjson/ppt2json",
+                      "POST /api/pptjson/json2ppt",
+                      "POST /api/ppt/updatePptTemplate",
+                      "POST /ppt/updateOutline"
+                    ]
+                  },
+                  {
+                    "group": "OpenAI",
+                    "expanded": false,
+                    "openapi": "api-reference/openapi.json",
+                    "pages": [
+                      "POST /v1/images/generations",
+                      "POST /v1/chat/completions",
+                      "POST /v1/videos",
+                      "GET /v1/videos/{video_id}",
+                      "POST /sora/v1/characters",
+                      "POST /v1/videos/{id}/remix",
+                      "POST /v1/videos/{video_id}/remix",
+                      "POST /v1/completions",
+                      "POST /v1/embeddings",
+                      "POST /v1/audio/transcriptions",
+                      "POST /v1/audio/translations",
+                      "POST /v1/audio/speech"
+                    ]
+                  },
+                  {
+                    "group": "其他与兼容接口",
+                    "expanded": false,
+                    "openapi": "api-reference/openapi.json",
+                    "pages": [
+                      "GET /api/user/apiInfo"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "language": "en",
+        "navbar": {
+          "links": [
+            {
+              "label": "Models",
+              "href": "https://api.maxapi.ai/modelmak"
+            }
+          ],
+          "primary": {
+            "type": "button",
+            "label": "Get API key",
+            "href": "http://api.maxapi.ai"
+          }
+        },
+        "tabs": [
+          {
+            "tab": "Documentation",
+            "icon": "book-open",
+            "groups": [
+              {
+                "group": "Getting started",
+                "pages": [
+                  "en/index",
+                  "en/quickstart"
+                ]
+              },
+              {
+                "group": "Developer guides",
+                "pages": [
+                  "en/guides/authentication",
+                  "en/guides/async-tasks",
+                  "en/guides/errors"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "API Reference",
+            "icon": "square-terminal",
+            "groups": [
+              {
+                "group": "API overview",
+                "pages": [
+                  "en/api-reference/overview"
+                ]
+              },
+              {
+                "group": "Browse by provider",
+                "pages": [
+                  {
+                    "group": "Google",
+                    "expanded": false,
+                    "openapi": "en/api-reference/openapi.json",
+                    "pages": [
+                      "POST /v1beta/models/gemini-2.5-flash-image:generateContent",
+                      "GET /v1/videos/{task_id}/content",
+                      "POST /vertex/v1/publishers/google/models/{model}:predictLongRunning",
+                      "POST /vertex/v1/publishers/google/models/{model}:fetchPredictOperation",
+                      "POST /aistudio/v1beta/models/{model}:predictLongRunning",
+                      "POST /aistudio/v1beta/models/{model}:fetchPredictOperation",
+                      "GET /aistudio/v1beta/files/am6emvv7ekgo:download",
+                      "POST /v1/video/generations",
+                      "GET /v1/tasks/id",
+                      "POST /veo/v1/api/video/submit",
+                      "GET /veo/v1/api/video/status/{taskId}",
+                      "GET /v1/videos/{id}",
+                      "GET /v1/videos/{id}/content",
+                      "POST /v2/videos/generations",
+                      "GET /v2/videos/generations/{task_id}"
+                    ]
+                  },
+                  {
+                    "group": "ByteDance",
+                    "expanded": false,
+                    "openapi": "en/api-reference/openapi.json",
+                    "pages": [
+                      "POST /seedance/api/v3/contents/generations/tasks",
+                      "GET /seedance/api/v3/contents/generations/tasks/{id}"
+                    ]
+                  },
+                  {
+                    "group": "Alibaba Cloud",
+                    "expanded": false,
+                    "openapi": "en/api-reference/openapi.json",
+                    "pages": [
+                      "POST /v1/images/edits",
+                      "POST /wan/api/v1/services/aigc/video-generation/video-synthesis",
+                      "POST /wan/api/v1/services/aigc/text2video/text-to-video",
+                      "POST /wan/api/v1/services/aigc/image2video/image-to-video",
+                      "GET /wan/api/v1/tasks/{task_id}"
+                    ]
+                  },
+                  {
+                    "group": "Kling AI",
+                    "expanded": false,
+                    "openapi": "en/api-reference/openapi.json",
+                    "pages": [
+                      "POST /kling/v1/images/generations",
+                      "POST /kling/v1/videos/text2video",
+                      "POST /kling/v1/videos/image2video",
+                      "GET /kling/v1/{action}/{action2}/{task_id}"
+                    ]
+                  },
+                  {
+                    "group": "Vidu",
+                    "expanded": false,
+                    "openapi": "en/api-reference/openapi.json",
+                    "pages": [
+                      "POST /vidu/ent/v2/img2video",
+                      "POST /vidu/ent/v2/text2video",
+                      "POST /ent/v2/reference2video",
+                      "POST /ent/v2/start-end2video",
+                      "POST /ent/v2/template",
+                      "POST /ent/v2/template-story",
+                      "POST /ent/v2/reference2image",
+                      "POST /ent/v2/text2audio",
+                      "POST /ent/v2/timing2audio",
+                      "POST /ent/v2/img2video-prompt-recommendation",
+                      "POST /ent/v2/lip-sync",
+                      "POST /ent/v2/extend",
+                      "POST /ent/v2/upscale-new",
+                      "GET /vidu/ent/v2/tasks/{id}/creations",
+                      "POST /ent/v2/tasks/{id}/cancel",
+                      "GET /ent/v2/credits"
+                    ]
+                  },
+                  {
+                    "group": "MiniMax",
+                    "expanded": false,
+                    "openapi": "en/api-reference/openapi.json",
+                    "pages": [
+                      "POST /hailuo/v1/video_generation",
+                      "GET /hailuo/v1/query/video_generation",
+                      "GET /hailuo/v1/files/retrieve"
+                    ]
+                  },
+                  {
+                    "group": "Midjourney",
+                    "expanded": false,
+                    "openapi": "en/api-reference/openapi.json",
+                    "pages": [
+                      "POST /mj/insight-face/swap",
+                      "POST /mj/submit/action",
+                      "POST /mj/submit/blend",
+                      "POST /mj/submit/describe",
+                      "POST /mj/submit/imagine",
+                      "POST /mj/submit/modal",
+                      "POST /mj/submit/shorten",
+                      "GET /mj/task/list",
+                      "POST /mj/task/list-by-condition",
+                      "POST /mj/task/query",
+                      "GET /mj/task/queue",
+                      "POST /mj/task/{id}/cancel",
+                      "GET /mj/task/{id}/fetch",
+                      "GET /mj/task/{id}/image-seed",
+                      "POST /mj-fast/mj/submit/video",
+                      "POST /mj-relax/mj/submit/video",
+                      "GET /mj/task/42a28dda-dc7a-4186-ac86-6e16c1fcef17/fetch"
+                    ]
+                  },
+                  {
+                    "group": "Suno",
+                    "expanded": false,
+                    "openapi": "en/api-reference/openapi.json",
+                    "pages": [
+                      "POST /suno/v1/music",
+                      "GET /suno/v1/music/id",
+                      "POST /suno/v1/v3.0/music",
+                      "GET /suno/v1/v3.0/music/id",
+                      "POST /suno/v2/uploads/audio",
+                      "POST /suno/v2/generate",
+                      "GET /suno/v2/feed",
+                      "GET /suno/v1/v3.0/lyrics/id",
+                      "POST /suno/v1/v3.0/lyrics",
+                      "POST /suno/submit/music",
+                      "GET /suno/fetch/{task_id}",
+                      "POST /suno/uploads/audio-url"
+                    ]
+                  },
+                  {
+                    "group": "Luma AI",
+                    "expanded": false,
+                    "openapi": "en/api-reference/openapi.json",
+                    "pages": [
+                      "POST /luma-vip/luma/v1/generations",
+                      "GET /luma-vip/luma/v1/task",
+                      "POST /luma/v1/generations",
+                      "GET /luma/v1/task",
+                      "POST /luma/v2/generations",
+                      "GET /luma/v2/generations/task_id",
+                      "POST /luma/v2/generations/task_id/extend",
+                      "GET /luma/v2/generations/task_id/download_video_url"
+                    ]
+                  },
+                  {
+                    "group": "Stability AI",
+                    "expanded": false,
+                    "openapi": "en/api-reference/openapi.json",
+                    "pages": [
+                      "POST /sd/v2beta/stable-image/generate/ultra",
+                      "POST /sd/v2beta/stable-image/generate/core",
+                      "POST /sd/v2beta/stable-image/generate/sd3",
+                      "POST /sd/v1/generation/{engine_id}/text-to-image"
+                    ]
+                  },
+                  {
+                    "group": "Fish Audio",
+                    "expanded": false,
+                    "openapi": "en/api-reference/openapi.json",
+                    "pages": [
+                      "POST /fish/v1/tts",
+                      "POST /fish/v1/asr"
+                    ]
+                  },
+                  {
+                    "group": "Ideogram",
+                    "expanded": false,
+                    "openapi": "en/api-reference/openapi.json",
+                    "pages": [
+                      "POST /ideogram/generate",
+                      "POST /ideogram/remix",
+                      "POST /ideogram/upscale",
+                      "POST /ideogram/describe"
+                    ]
+                  },
+                  {
+                    "group": "Runway",
+                    "expanded": false,
+                    "openapi": "en/api-reference/openapi.json",
+                    "pages": [
+                      "POST /runwayml/v1/image_to_video",
+                      "POST /runwayml/v1/character_performance",
+                      "POST /runwayml/v1/video_to_video"
+                    ]
+                  },
+                  {
+                    "group": "MewXAI",
+                    "expanded": false,
+                    "openapi": "en/api-reference/openapi.json",
+                    "pages": [
+                      "POST /api/v1/images/neuralstyle/generate",
+                      "POST /api/v1/images/generate",
+                      "POST /api/v1/images/shadow/generate",
+                      "POST /api/v1/mx/validate/checkPayload",
+                      "POST /api/v1/mx/images/computed",
+                      "POST /api/v1/mx/images/generate",
+                      "GET /api/v1/mx/images/modelList",
+                      "GET /api/v1/mx/images/extraList",
+                      "POST /api/v1/mx/images/cute/generate",
+                      "GET /api/v1/mx/images/cute/extraList",
+                      "POST /api/xxx/xxx",
+                      "GET /api/v1/images/detail",
+                      "GET /api/v1/user/count",
+                      "GET /api/v1/template/list",
+                      "GET /api/v1/model/list",
+                      "POST /api/v1/images/cute/generate"
+                    ]
+                  },
+                  {
+                    "group": "PicWish",
+                    "expanded": false,
+                    "openapi": "en/api-reference/openapi.json",
+                    "pages": [
+                      "POST /api/tasks/visual/segmentation",
+                      "GET /api/tasks/visual/imgcompress/task_id",
+                      "GET /api/tasks/visual/segmentation/task_id",
+                      "POST /api/tasks/visual/scale",
+                      "GET /api/tasks/visual/scale/task_id",
+                      "POST /api/tasks/visual/inpaint",
+                      "GET /api/tasks/visual/inpaint/task_id",
+                      "POST /api/tasks/visual/r-background",
+                      "GET /api/tasks/visual/r-background/task_id",
+                      "POST /api/tasks/visual/idphoto",
+                      "GET /api/tasks/visual/idphoto/task_id",
+                      "POST /api/tasks/visual/colorization",
+                      "GET /api/tasks/visual/colorization/task_id",
+                      "POST /api/tasks/visual/imgcompress",
+                      "POST /api/tasks/document/ocr",
+                      "GET /api/tasks/document/ocr/task_id",
+                      "POST /api/tasks/visual/correction",
+                      "GET /api/tasks/visual/correction/task_id"
+                    ]
+                  },
+                  {
+                    "group": "Presentation services",
+                    "expanded": false,
+                    "openapi": "en/api-reference/openapi.json",
+                    "pages": [
+                      "POST /apps/ppt-create",
+                      "GET /apps/ppt-result",
+                      "POST /apps/ppt-structure",
+                      "POST /apps/ppt-cover",
+                      "POST /apps/ppt-recover",
+                      "POST /apps/ppt-page",
+                      "POST /apps/ppt-create-file",
+                      "POST /apps/ppt-create-thesis",
+                      "POST /apps/ppt-create-task",
+                      "POST /apps/ppt-note",
+                      "GET /apps/ppt-download",
+                      "POST /api/user/createApiToken",
+                      "POST /api/ppt/generateContent",
+                      "GET /api/ppt/xxx",
+                      "POST /api/ppt/parseFileData",
+                      "POST /api/ppt/generateOutline",
+                      "POST /api/ppt/templates",
+                      "POST /api/ppt/randomTemplates",
+                      "POST /api/ppt/generatePptx",
+                      "POST /api/ppt/directGeneratePptx",
+                      "POST /api/ppt/listPptx",
+                      "GET /api/ppt/loadPptx",
+                      "POST /api/ppt/downloadPptx",
+                      "POST /api/ppt/updatePptxAttr",
+                      "POST /api/ppt/savePptx",
+                      "POST /api/ppt/delete",
+                      "GET /api/ppt/asyncPptInfo",
+                      "POST /api/pptjson/ppt2json",
+                      "POST /api/pptjson/json2ppt",
+                      "POST /api/ppt/updatePptTemplate",
+                      "POST /ppt/updateOutline"
+                    ]
+                  },
+                  {
+                    "group": "OpenAI",
+                    "expanded": false,
+                    "openapi": "en/api-reference/openapi.json",
+                    "pages": [
+                      "POST /v1/images/generations",
+                      "POST /v1/chat/completions",
+                      "POST /v1/videos",
+                      "GET /v1/videos/{video_id}",
+                      "POST /sora/v1/characters",
+                      "POST /v1/videos/{id}/remix",
+                      "POST /v1/videos/{video_id}/remix",
+                      "POST /v1/completions",
+                      "POST /v1/embeddings",
+                      "POST /v1/audio/transcriptions",
+                      "POST /v1/audio/translations",
+                      "POST /v1/audio/speech"
+                    ]
+                  },
+                  {
+                    "group": "Other and compatible APIs",
+                    "expanded": false,
+                    "openapi": "en/api-reference/openapi.json",
+                    "pages": [
+                      "GET /api/user/apiInfo"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
       }
-    ],
-    "primary": {
-      "type": "button",
-      "label": "Dashboard",
-      "href": "https://app.mintlify.com"
+    ]
+  },
+  "api": {
+    "playground": {
+      "display": "interactive"
+    },
+    "examples": {
+      "languages": [
+        "curl",
+        "python",
+        "javascript"
+      ]
     }
   },
   "contextual": {
@@ -61,12 +754,5 @@
       "cursor",
       "vscode"
     ]
-  },
-  "footer": {
-    "socials": {
-      "x": "https://x.com/mintlify",
-      "github": "https://github.com/mintlify",
-      "linkedin": "https://linkedin.com/company/mintlify"
-    }
   }
 }
