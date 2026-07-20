@@ -7,14 +7,17 @@ MaxAPI 提供统一的 AI 模型 API。你可以复用 OpenAI SDK，也可以直
 
 <CardGroup cols={2}>
   <Card title="5 分钟快速接入" icon="rocket" href="/quickstart">
-    获取 API Key，并完成第一个聊天请求。
+    获取 API Key，并完成第一个聊天hui hua请求。
   </Card>
+
   <Card title="API 接口参考" icon="brackets-curly" href="/api-reference">
     查看请求参数、响应结构和在线调试工具。
   </Card>
+
   <Card title="身份认证" icon="key" href="/guides/authentication">
     了解 API Key 的传递方式和安全建议。
   </Card>
+
   <Card title="异步任务" icon="clock" href="/guides/async-tasks">
     处理图像、视频和音乐生成任务。
   </Card>
@@ -37,12 +40,6 @@ https://api.maxapi.ai
 ## 支持的能力
 
 <CardGroup cols={3}>
-  <Card title="文本与对话" icon="messages">聊天补全、文本补全和向量嵌入。</Card>
-  <Card title="图像" icon="image">DALL·E、Flux、Stable Diffusion 和 Midjourney 等。</Card>
-  <Card title="视频" icon="video">Veo、Wan、Sora、Vidu、Luma 和 Hailuo 等。</Card>
-  <Card title="音频" icon="waveform">语音合成、语音识别和翻译。</Card>
-  <Card title="音乐" icon="music">Suno 等音乐生成与任务查询接口。</Card>
-  <Card title="厂商原生格式" icon="code">在需要时使用厂商兼容的请求格式。</Card>
 </CardGroup>
 
 ## 选择接口格式
@@ -51,9 +48,11 @@ https://api.maxapi.ai
   <Accordion title="OpenAI 兼容格式">
     适合聊天、补全、嵌入、图像和音频等常见场景。已有 OpenAI 项目通常只需修改 Base URL 和模型名称。
   </Accordion>
+
   <Accordion title="统一异步格式">
     适合生成时间较长的图像、视频或音乐任务。创建任务后，使用任务 ID 轮询结果。
   </Accordion>
+
   <Accordion title="厂商原生格式">
     适合需要特定模型高级参数或迁移已有厂商 SDK 的场景。
   </Accordion>
