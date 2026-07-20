@@ -1,0 +1,36 @@
+---
+title: "Gemini CLI"
+description: "Call MaxAPI from an OpenAI-compatible CLI workflow."
+---
+
+[Gemini CLI](https://github.com/google-gemini/gemini-cli) is a command-line AI tool that can use a custom model endpoint.
+
+<Steps>
+  <Step title="Install">
+
+```bash
+npm install -g @google/gemini-cli
+```
+  </Step>
+  <Step title="Configure MaxAPI">
+
+```bash
+export OPENAI_API_KEY="YOUR_API_KEY"
+export OPENAI_BASE_URL="https://api.maxapi.ai/v1"
+```
+  </Step>
+  <Step title="Start the tool">
+
+```bash
+gemini
+```
+  </Step>
+</Steps>
+
+<Warning>
+  Store API keys only on trusted devices. Never commit a real key to Git or share it with others.
+</Warning>
+
+<Note>
+  Replace `YOUR_MODEL_ID` with an ID from the MaxAPI model list. Environment-variable names can differ between tool versions; check the tool's current documentation if the value is not detected.
+</Note>

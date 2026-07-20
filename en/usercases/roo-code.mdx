@@ -1,0 +1,32 @@
+---
+title: "Roo Code"
+description: "Use MaxAPI in Roo Code's Code, Architect, Ask, and Debug modes."
+---
+
+[Roo Code](https://github.com/RooVetGit/Roo-Code) supports custom OpenAI-compatible model providers.
+
+<Steps>
+  <Step title="Install and open settings">
+    Install Roo Code, then open its model or provider settings.
+  </Step>
+  <Step title="Add MaxAPI">
+
+| Field | Value |
+| --- | --- |
+| Provider | `OpenAI Compatible` |
+| Base URL | `https://api.maxapi.ai/v1` |
+| API Key | `YOUR_API_KEY` |
+| Model | `YOUR_MODEL_ID` |
+  </Step>
+  <Step title="Verify">
+    Save the configuration, run the built-in connection test when available, then start a new chat.
+  </Step>
+</Steps>
+
+<Warning>
+  Store API keys only on trusted devices. Never commit a real key to Git or share it with others.
+</Warning>
+
+<Note>
+  Some clients restrict agent mode or autocomplete when using third-party endpoints. These restrictions come from the client, not MaxAPI.
+</Note>

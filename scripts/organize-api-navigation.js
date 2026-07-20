@@ -95,6 +95,23 @@ function vendorGroups(openapi, english = false) {
 function tabs({ english = false } = {}) {
   const prefix = english ? "en/" : "";
   const openapi = english ? englishSource : source;
+  const useCasePages = [
+    "index",
+    "openclaw",
+    "aider",
+    "chatbox",
+    "claude-code",
+    "cline",
+    "codex",
+    "continue",
+    "cursor",
+    "gemini-cli",
+    "goamz",
+    "immersive-translate",
+    "lobechat",
+    "roo-code",
+    "zed",
+  ].map((page) => `${prefix}usercases/${page}`);
   return [
     {
       tab: english ? "Documentation" : "文档",
@@ -134,7 +151,7 @@ function tabs({ english = false } = {}) {
       groups: [
         {
           group: english ? "Use cases" : "场景示例",
-          pages: [`${prefix}usercases/index`, `${prefix}usercases/openclaw`],
+          pages: useCasePages,
         },
       ],
     },

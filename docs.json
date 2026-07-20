@@ -380,7 +380,20 @@
                 "group": "场景示例",
                 "pages": [
                   "usercases/index",
-                  "usercases/openclaw"
+                  "usercases/openclaw",
+                  "usercases/aider",
+                  "usercases/chatbox",
+                  "usercases/claude-code",
+                  "usercases/cline",
+                  "usercases/codex",
+                  "usercases/continue",
+                  "usercases/cursor",
+                  "usercases/gemini-cli",
+                  "usercases/goamz",
+                  "usercases/immersive-translate",
+                  "usercases/lobechat",
+                  "usercases/roo-code",
+                  "usercases/zed"
                 ]
               }
             ]
@@ -748,7 +761,20 @@
                 "group": "Use cases",
                 "pages": [
                   "en/usercases/index",
-                  "en/usercases/openclaw"
+                  "en/usercases/openclaw",
+                  "en/usercases/aider",
+                  "en/usercases/chatbox",
+                  "en/usercases/claude-code",
+                  "en/usercases/cline",
+                  "en/usercases/codex",
+                  "en/usercases/continue",
+                  "en/usercases/cursor",
+                  "en/usercases/gemini-cli",
+                  "en/usercases/goamz",
+                  "en/usercases/immersive-translate",
+                  "en/usercases/lobechat",
+                  "en/usercases/roo-code",
+                  "en/usercases/zed"
                 ]
               }
             ]

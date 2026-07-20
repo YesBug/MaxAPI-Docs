@@ -1,0 +1,36 @@
+---
+title: "Claude Code"
+description: "Connect Claude Code to MaxAPI through the Anthropic-compatible API."
+---
+
+[Claude Code](https://docs.anthropic.com/en/docs/claude-code/overview) is a command-line AI tool that can use a custom model endpoint.
+
+<Steps>
+  <Step title="Install">
+
+```bash
+npm install -g @anthropic-ai/claude-code
+```
+  </Step>
+  <Step title="Configure MaxAPI">
+
+```bash
+export ANTHROPIC_API_KEY="YOUR_API_KEY"
+export ANTHROPIC_BASE_URL="https://api.maxapi.ai/anthropic"
+```
+  </Step>
+  <Step title="Start the tool">
+
+```bash
+claude
+```
+  </Step>
+</Steps>
+
+<Warning>
+  Store API keys only on trusted devices. Never commit a real key to Git or share it with others.
+</Warning>
+
+<Note>
+  Replace `YOUR_MODEL_ID` with an ID from the MaxAPI model list. Environment-variable names can differ between tool versions; check the tool's current documentation if the value is not detected.
+</Note>

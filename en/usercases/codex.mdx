@@ -1,0 +1,43 @@
+---
+title: "OpenAI Codex CLI"
+description: "Use MaxAPI in Codex CLI through a custom model provider."
+---
+
+[Codex CLI](https://github.com/openai/codex) supports custom providers through `config.toml`.
+
+<Steps>
+  <Step title="Install">
+
+```bash
+npm install -g @openai/codex
+export MAXAPI_API_KEY="YOUR_API_KEY"
+mkdir -p ~/.codex
+```
+  </Step>
+  <Step title="Configure the provider">
+
+```toml
+model = "YOUR_MODEL_ID"
+model_provider = "maxapi"
+disable_response_storage = true
+
+[model_providers.maxapi]
+name = "MaxAPI"
+base_url = "https://api.maxapi.ai/v1"
+env_key = "MAXAPI_API_KEY"
+wire_api = "responses"
+```
+  </Step>
+  <Step title="Start">
+
+```bash
+codex
+```
+  </Step>
+</Steps>
+
+<Warning>
+  Store API keys only on trusted devices. Never commit a real key to Git or share it with others.
+</Warning>
+
+<Note>Codex CLI requires the Responses protocol. Select a model and route that support `/v1/responses`.</Note>

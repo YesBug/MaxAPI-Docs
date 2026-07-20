@@ -1,25 +1,40 @@
 ---
 title: "Use cases"
-description: "Integrate MaxAPI with popular tools and production workflows."
+description: "Integrate MaxAPI with development tools, chat clients, and business platforms."
 ---
 
-Use-case guides provide complete configuration and verification steps. Copy an example, then replace the API key and model ID.
+Choose a tool and follow its guide to configure the MaxAPI base URL, API key, and model ID.
+
+## Agents and coding tools
 
 <CardGroup cols={2}>
-  <Card title="OpenClaw integration" icon="robot" href="/en/usercases/openclaw">
-    Configure MaxAPI as an OpenAI-compatible model provider for OpenClaw.
-  </Card>
-  <Card title="OpenAI SDK" icon="code" href="/en/quickstart">
-    Call Chat Completions with Python, Node.js, or cURL.
-  </Card>
-  <Card title="Asynchronous generation" icon="clock" href="/en/guides/async-tasks">
-    Create and poll image, video, and music tasks.
-  </Card>
-  <Card title="Browse all models" icon="grid-2" href="https://api.maxapi.ai/modelmak">
-    Find currently available model IDs and capabilities.
-  </Card>
+  <Card title="OpenClaw" icon="robot" href="/en/usercases/openclaw">Configure a self-hosted AI assistant.</Card>
+  <Card title="Aider" icon="terminal" href="/en/usercases/aider">Use AI pair programming in the terminal.</Card>
+  <Card title="Claude Code" icon="terminal" href="/en/usercases/claude-code">Connect through the Anthropic-compatible API.</Card>
+  <Card title="OpenAI Codex CLI" icon="terminal" href="/en/usercases/codex">Configure a custom Responses provider.</Card>
+  <Card title="Cline" icon="code" href="/en/usercases/cline">Run a coding agent in VS Code.</Card>
+  <Card title="Roo Code" icon="code" href="/en/usercases/roo-code">Configure a multi-mode coding assistant.</Card>
+  <Card title="Continue" icon="code" href="/en/usercases/continue">Connect VS Code and JetBrains.</Card>
+  <Card title="Cursor" icon="code" href="/en/usercases/cursor">Override the OpenAI base URL.</Card>
+  <Card title="Gemini CLI" icon="terminal" href="/en/usercases/gemini-cli">Call MaxAPI from a CLI workflow.</Card>
+  <Card title="Zed editor" icon="code" href="/en/usercases/zed">Configure the Zed AI assistant.</Card>
+</CardGroup>
+
+## Chat and translation
+
+<CardGroup cols={2}>
+  <Card title="Chatbox" icon="messages" href="/en/usercases/chatbox">Chat on desktop, mobile, and the web.</Card>
+  <Card title="LobeChat" icon="messages" href="/en/usercases/lobechat">Add an OpenAI-compatible provider.</Card>
+  <Card title="Immersive Translate" icon="language" href="/en/usercases/immersive-translate">Translate webpages, PDFs, ebooks, and subtitles.</Card>
+</CardGroup>
+
+## Media platforms
+
+<CardGroup cols={2}>
+  <Card title="GoAMZ" icon="photo-film-music" href="/en/usercases/goamz">Configure chat, Midjourney, Kling, Luma, and Suno.</Card>
+  <Card title="Asynchronous generation" icon="clock" href="/en/guides/async-tasks">Handle image, video, and music generation tasks.</Card>
 </CardGroup>
 
 <Note>
-  More use cases will be added over time. OpenAI-compatible examples use `https://api.maxapi.ai/v1` as the base URL.
+  OpenAI-compatible clients generally use `https://api.maxapi.ai/v1`. Other protocols and models may use different paths; follow the relevant use-case guide.
 </Note>

@@ -1,0 +1,43 @@
+---
+title: "OpenAI Codex CLI"
+description: "通过自定义模型供应商在 Codex CLI 中使用 MaxAPI。"
+---
+
+[Codex CLI](https://github.com/openai/codex) 可以通过 `config.toml` 配置自定义供应商。
+
+<Steps>
+  <Step title="安装">
+
+```bash
+npm install -g @openai/codex
+export MAXAPI_API_KEY="YOUR_API_KEY"
+mkdir -p ~/.codex
+```
+  </Step>
+  <Step title="配置供应商">
+
+```toml
+model = "YOUR_MODEL_ID"
+model_provider = "maxapi"
+disable_response_storage = true
+
+[model_providers.maxapi]
+name = "MaxAPI"
+base_url = "https://api.maxapi.ai/v1"
+env_key = "MAXAPI_API_KEY"
+wire_api = "responses"
+```
+  </Step>
+  <Step title="启动">
+
+```bash
+codex
+```
+  </Step>
+</Steps>
+
+<Warning>
+  请仅在受信任的设备上保存 API Key。不要将真实密钥提交到 Git 仓库或分享给他人。
+</Warning>
+
+<Note>Codex CLI 要求使用 Responses 协议。请选择支持 `/v1/responses` 的模型和路由。</Note>

@@ -1,0 +1,36 @@
+---
+title: "Aider"
+description: "在终端中使用 AI 结对编程，并通过 MaxAPI 调用模型。"
+---
+
+[Aider](https://aider.chat/) 是一款可以使用自定义模型端点的命令行 AI 工具。
+
+<Steps>
+  <Step title="安装">
+
+```bash
+pipx install aider-chat
+```
+  </Step>
+  <Step title="配置 MaxAPI">
+
+```bash
+export OPENAI_API_KEY="YOUR_API_KEY"
+export OPENAI_API_BASE="https://api.maxapi.ai/v1"
+```
+  </Step>
+  <Step title="启动工具">
+
+```bash
+aider --model YOUR_MODEL_ID
+```
+  </Step>
+</Steps>
+
+<Warning>
+  请仅在受信任的设备上保存 API Key。不要将真实密钥提交到 Git 仓库或分享给他人。
+</Warning>
+
+<Note>
+  请将 `YOUR_MODEL_ID` 替换为 MaxAPI 模型列表中的模型 ID。不同工具版本使用的环境变量名称可能不同；如果配置未生效，请检查工具的当前版本文档。
+</Note>

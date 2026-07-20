@@ -1,0 +1,23 @@
+---
+title: "Zed 编辑器"
+description: "为 Zed 的 AI 助手配置 MaxAPI OpenAI 兼容接口。"
+---
+
+[Zed](https://zed.dev/) 可以在 `settings.json` 中配置自定义模型端点。
+
+```json
+{
+  "language_models": {
+    "openai": {
+      "api_url": "https://api.maxapi.ai/v1",
+      "api_key": "YOUR_API_KEY"
+    }
+  }
+}
+```
+
+打开 AI 助手面板，然后选择 `YOUR_MODEL_ID`。
+
+<Warning>
+  请仅在受信任的设备上保存 API Key。不要将真实密钥提交到 Git 仓库或分享给他人。
+</Warning>

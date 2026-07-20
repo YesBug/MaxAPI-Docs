@@ -1,0 +1,27 @@
+---
+title: "沉浸式翻译"
+description: "使用 MaxAPI 文本模型翻译网页、PDF、电子书和字幕。"
+---
+
+[沉浸式翻译](https://immersivetranslate.com/) 支持添加自定义 AI 翻译服务。
+
+<Steps>
+  <Step title="添加翻译服务">
+    打开 **设置 → 翻译服务 → 添加自定义翻译服务 → 自定义 AI**。
+  </Step>
+  <Step title="填写 MaxAPI 配置">
+
+| 字段 | 填写内容 |
+| --- | --- |
+| API URL | `https://api.maxapi.ai/v1/chat/completions` |
+| API Key | `YOUR_API_KEY` |
+| 模型 | `YOUR_MODEL_ID` |
+  </Step>
+  <Step title="测试并开始翻译">
+    点击测试服务。测试成功后，打开网页并开始翻译。
+  </Step>
+</Steps>
+
+<Warning>
+  请仅在受信任的设备上保存 API Key。不要将真实密钥提交到 Git 仓库或分享给他人。
+</Warning>

@@ -1,0 +1,23 @@
+---
+title: "Continue"
+description: "Configure MaxAPI models in VS Code or JetBrains."
+---
+
+[Continue](https://www.continue.dev/) is an open-source coding assistant for VS Code and JetBrains.
+
+Open **Continue: Open config**, then add:
+
+```yaml
+models:
+  - name: MaxAPI model
+    provider: openai
+    model: YOUR_MODEL_ID
+    apiKey: YOUR_API_KEY
+    apiBase: https://api.maxapi.ai/v1
+```
+
+<Warning>
+  Store API keys only on trusted devices. Never commit a real key to Git or share it with others.
+</Warning>
+
+Select **MaxAPI model** from the model menu and start a chat. Use a fast model for autocomplete and a stronger model for agent tasks.

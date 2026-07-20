@@ -1,0 +1,23 @@
+---
+title: "Zed editor"
+description: "Configure the Zed AI assistant with the MaxAPI OpenAI-compatible API."
+---
+
+[Zed](https://zed.dev/) supports custom language-model endpoints in `settings.json`.
+
+```json
+{
+  "language_models": {
+    "openai": {
+      "api_url": "https://api.maxapi.ai/v1",
+      "api_key": "YOUR_API_KEY"
+    }
+  }
+}
+```
+
+Open the Assistant panel and select `YOUR_MODEL_ID`.
+
+<Warning>
+  Store API keys only on trusted devices. Never commit a real key to Git or share it with others.
+</Warning>

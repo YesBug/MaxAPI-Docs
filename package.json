@@ -4,7 +4,8 @@
     "docs:validate": "mint validate",
     "openapi:prepare": "node scripts/prepare-openapi.js",
     "openapi:english": "node scripts/prepare-english-openapi.js",
-    "openapi:navigation": "node scripts/organize-api-navigation.js"
+    "openapi:navigation": "node scripts/organize-api-navigation.js",
+    "usercases:generate": "node scripts/generate-usercases.js"
   },
   "dependencies": {
     "mint": "^4.2.715"

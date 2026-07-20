@@ -1,25 +1,40 @@
 ---
 title: "场景示例"
-description: "通过完整示例将 MaxAPI 接入常用工具和真实业务场景。"
+description: "通过完整示例将 MaxAPI 接入常用开发工具、聊天客户端和业务平台。"
 ---
 
-场景示例提供从配置到验证的完整步骤。你可以直接复制配置，再替换 API Key 和模型 ID。
+选择你正在使用的工具，按照页面步骤填写 MaxAPI Base URL、API Key 和模型 ID。
+
+## Agent 与编程工具
 
 <CardGroup cols={2}>
-  <Card title="OpenClaw 集成" icon="robot" href="/usercases/openclaw">
-    为 OpenClaw 配置 MaxAPI，并将它作为 OpenAI 兼容模型供应商使用。
-  </Card>
-  <Card title="OpenAI SDK 接入" icon="code" href="/quickstart">
-    使用 Python、Node.js 或 cURL 调用聊天补全接口。
-  </Card>
-  <Card title="异步生成任务" icon="clock" href="/guides/async-tasks">
-    创建并轮询图像、视频和音乐生成任务。
-  </Card>
-  <Card title="浏览全部模型" icon="grid-2" href="https://api.maxapi.ai/modelmak">
-    查看当前可用的模型 ID 和模型能力。
-  </Card>
+  <Card title="OpenClaw" icon="robot" href="/usercases/openclaw">配置自托管 AI 助手。</Card>
+  <Card title="Aider" icon="terminal" href="/usercases/aider">在终端中进行 AI 结对编程。</Card>
+  <Card title="Claude Code" icon="terminal" href="/usercases/claude-code">通过 Anthropic 兼容协议接入。</Card>
+  <Card title="OpenAI Codex CLI" icon="terminal" href="/usercases/codex">配置自定义 Responses 供应商。</Card>
+  <Card title="Cline" icon="code" href="/usercases/cline">在 VS Code 中运行编程 Agent。</Card>
+  <Card title="Roo Code" icon="code" href="/usercases/roo-code">配置多模式编程助手。</Card>
+  <Card title="Continue" icon="code" href="/usercases/continue">接入 VS Code 和 JetBrains。</Card>
+  <Card title="Cursor" icon="code" href="/usercases/cursor">覆盖 OpenAI Base URL。</Card>
+  <Card title="Gemini CLI" icon="terminal" href="/usercases/gemini-cli">在 CLI 工作流中调用 MaxAPI。</Card>
+  <Card title="Zed 编辑器" icon="code" href="/usercases/zed">配置 Zed AI 助手。</Card>
+</CardGroup>
+
+## 聊天与翻译
+
+<CardGroup cols={2}>
+  <Card title="Chatbox" icon="messages" href="/usercases/chatbox">在桌面、移动端和网页中聊天。</Card>
+  <Card title="LobeChat" icon="messages" href="/usercases/lobechat">添加 OpenAI 兼容供应商。</Card>
+  <Card title="沉浸式翻译" icon="language" href="/usercases/immersive-translate">翻译网页、PDF、电子书和字幕。</Card>
+</CardGroup>
+
+## 多媒体平台
+
+<CardGroup cols={2}>
+  <Card title="GoAMZ" icon="photo-film-music" href="/usercases/goamz">配置对话、Midjourney、可灵、Luma 和 Suno。</Card>
+  <Card title="异步生成任务" icon="clock" href="/guides/async-tasks">处理图像、视频和音乐生成任务。</Card>
 </CardGroup>
 
 <Note>
-  更多场景将持续添加。所有示例都使用 `https://api.maxapi.ai/v1` 作为 OpenAI 兼容 Base URL。
+  OpenAI 兼容客户端通常使用 `https://api.maxapi.ai/v1`。不同协议或模型可能使用其他路径，请以对应场景页面为准。
 </Note>

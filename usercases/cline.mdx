@@ -1,0 +1,32 @@
+---
+title: "Cline"
+description: "在 VS Code 中使用 MaxAPI 完成 Agent 编程任务。"
+---
+
+[Cline](https://github.com/cline/cline) 支持自定义 OpenAI 兼容模型供应商。
+
+<Steps>
+  <Step title="安装并打开设置">
+    安装 Cline，然后打开模型或供应商设置。
+  </Step>
+  <Step title="添加 MaxAPI">
+
+| 字段 | 填写内容 |
+| --- | --- |
+| 供应商 | `OpenAI Compatible` |
+| Base URL | `https://api.maxapi.ai/v1` |
+| API Key | `YOUR_API_KEY` |
+| 模型 | `YOUR_MODEL_ID` |
+  </Step>
+  <Step title="验证连接">
+    保存配置。如果客户端提供连接测试，请先完成测试，然后新建对话。
+  </Step>
+</Steps>
+
+<Warning>
+  请仅在受信任的设备上保存 API Key。不要将真实密钥提交到 Git 仓库或分享给他人。
+</Warning>
+
+<Note>
+  部分客户端会限制第三方端点使用 Agent 模式或自动补全。这些限制来自客户端本身，并非 MaxAPI。
+</Note>

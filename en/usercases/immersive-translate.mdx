@@ -1,0 +1,27 @@
+---
+title: "Immersive Translate"
+description: "Translate webpages, PDFs, ebooks, and subtitles with MaxAPI text models."
+---
+
+[Immersive Translate](https://immersivetranslate.com/) can use a custom AI translation service.
+
+<Steps>
+  <Step title="Add a translation service">
+    Open **Settings → Translation services → Add custom translation service → Custom AI**.
+  </Step>
+  <Step title="Enter MaxAPI settings">
+
+| Field | Value |
+| --- | --- |
+| API URL | `https://api.maxapi.ai/v1/chat/completions` |
+| API Key | `YOUR_API_KEY` |
+| Model | `YOUR_MODEL_ID` |
+  </Step>
+  <Step title="Test and translate">
+    Run the service test, then open a webpage and start translation.
+  </Step>
+</Steps>
+
+<Warning>
+  Store API keys only on trusted devices. Never commit a real key to Git or share it with others.
+</Warning>
