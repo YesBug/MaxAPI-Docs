@@ -1,0 +1,112 @@
+---
+title: "OpenClaw integration"
+description: "Configure MaxAPI as a custom model provider in OpenClaw."
+---
+
+[OpenClaw](https://openclaw.ai/) is a self-hosted AI assistant that connects chat channels such as Telegram, WhatsApp, and Discord to AI models and tools.
+
+This guide configures MaxAPI as an OpenAI-compatible provider.
+
+## Prerequisites
+
+Before you begin, you need:
+
+- A MaxAPI API key
+- An available model ID
+- Node.js 22 or later
+- OpenClaw installed locally
+
+<Steps>
+  <Step title="Install OpenClaw">
+    Install OpenClaw globally with npm, then start its onboarding flow.
+
+    ```bash
+    npm install -g openclaw
+    openclaw onboard
+    ```
+  </Step>
+
+  <Step title="Store the API key">
+    Store your MaxAPI API key in an environment variable.
+
+    ```bash
+    export MAXAPI_API_KEY="YOUR_API_KEY"
+    ```
+
+    <Warning>
+      Never commit a real API key to a configuration repository. Use environment variables or a secrets manager in production.
+    </Warning>
+  </Step>
+
+  <Step title="Add the MaxAPI provider">
+    Add `maxapi` under `models.providers` in your OpenClaw configuration. Replace `YOUR_MODEL_ID` with an ID from the [model list](https://api.maxapi.ai/modelmak).
+
+    ```json5
+    {
+      models: {
+        mode: "merge",
+        providers: {
+          maxapi: {
+            baseUrl: "https://api.maxapi.ai/v1",
+            apiKey: "${MAXAPI_API_KEY}",
+            api: "openai-completions",
+            models: [
+              {
+                id: "YOUR_MODEL_ID",
+                name: "MaxAPI model",
+                input: ["text"],
+                contextWindow: 128000,
+                maxTokens: 8192
+              }
+            ]
+          }
+        }
+      },
+      agents: {
+        defaults: {
+          model: {
+            primary: "maxapi/YOUR_MODEL_ID"
+          }
+        }
+      }
+    }
+    ```
+
+    <Note>
+      Match `contextWindow` and `maxTokens` to the selected model. For a vision-capable model, set `input` to `["text", "image"]`.
+    </Note>
+  </Step>
+
+  <Step title="Verify the configuration">
+    Check model status, then select the MaxAPI model.
+
+    ```bash
+    openclaw models status
+    openclaw models list
+    openclaw models set maxapi/YOUR_MODEL_ID
+    ```
+  </Step>
+</Steps>
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="Invalid API key">
+    Confirm that `MAXAPI_API_KEY` is available to the shell or service that starts OpenClaw, and that the key is active.
+  </Accordion>
+  <Accordion title="Model not found">
+    Ensure `models[].id` exactly matches the MaxAPI model list. Select it using the `maxapi/MODEL_ID` format.
+  </Accordion>
+  <Accordion title="The request returns 400">
+    Ensure `api` is set to `openai-completions`. Check whether the model supports tools, image input, or other advanced request fields.
+  </Accordion>
+  <Accordion title="The request times out">
+    Add or increase `timeoutSeconds` in the provider configuration. Use asynchronous endpoints for video, image, and music generation.
+  </Accordion>
+</AccordionGroup>
+
+## Related documentation
+
+- [OpenClaw model providers](https://docs.openclaw.ai/concepts/model-providers)
+- [MaxAPI authentication](/en/guides/authentication)
+- [MaxAPI API Reference](/en/api-reference/overview)

@@ -371,6 +371,19 @@
                 ]
               }
             ]
+          },
+          {
+            "tab": "场景示例",
+            "icon": "lightbulb",
+            "groups": [
+              {
+                "group": "场景示例",
+                "pages": [
+                  "usercases/index",
+                  "usercases/openclaw"
+                ]
+              }
+            ]
           }
         ]
       },
@@ -723,6 +736,19 @@
                       "GET /api/user/apiInfo"
                     ]
                   }
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "Use cases",
+            "icon": "lightbulb",
+            "groups": [
+              {
+                "group": "Use cases",
+                "pages": [
+                  "en/usercases/index",
+                  "en/usercases/openclaw"
                 ]
               }
             ]

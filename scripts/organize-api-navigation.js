@@ -128,6 +128,16 @@ function tabs({ english = false } = {}) {
         },
       ],
     },
+    {
+      tab: english ? "Use cases" : "场景示例",
+      icon: "lightbulb",
+      groups: [
+        {
+          group: english ? "Use cases" : "场景示例",
+          pages: [`${prefix}usercases/index`, `${prefix}usercases/openclaw`],
+        },
+      ],
+    },
   ];
 }
 

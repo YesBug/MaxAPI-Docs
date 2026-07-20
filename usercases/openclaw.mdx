@@ -1,0 +1,112 @@
+---
+title: "OpenClaw 集成"
+description: "将 MaxAPI 配置为 OpenClaw 的自定义模型供应商。"
+---
+
+[OpenClaw](https://openclaw.ai/) 是一个可自行托管的 AI 助手。它可以连接 Telegram、WhatsApp、Discord 等聊天渠道，并通过模型供应商执行任务。
+
+本指南将 MaxAPI 配置为 OpenClaw 的 OpenAI 兼容供应商。
+
+## 准备工作
+
+开始前，你需要：
+
+- 一个 MaxAPI API Key
+- 一个可用的模型 ID
+- Node.js 22 或更高版本
+- 已安装 OpenClaw
+
+<Steps>
+  <Step title="安装 OpenClaw">
+    使用 npm 全局安装 OpenClaw，然后运行初始化向导。
+
+    ```bash
+    npm install -g openclaw
+    openclaw onboard
+    ```
+  </Step>
+
+  <Step title="保存 API Key">
+    将 MaxAPI API Key 保存为环境变量。
+
+    ```bash
+    export MAXAPI_API_KEY="YOUR_API_KEY"
+    ```
+
+    <Warning>
+      不要把真实 API Key 直接提交到配置仓库。生产环境应使用环境变量或密钥管理服务。
+    </Warning>
+  </Step>
+
+  <Step title="添加 MaxAPI 供应商">
+    打开 OpenClaw 配置文件，在 `models.providers` 中添加 `maxapi`。将 `YOUR_MODEL_ID` 替换为[模型列表](https://api.maxapi.ai/modelmak)中的模型 ID。
+
+    ```json5
+    {
+      models: {
+        mode: "merge",
+        providers: {
+          maxapi: {
+            baseUrl: "https://api.maxapi.ai/v1",
+            apiKey: "${MAXAPI_API_KEY}",
+            api: "openai-completions",
+            models: [
+              {
+                id: "YOUR_MODEL_ID",
+                name: "MaxAPI model",
+                input: ["text"],
+                contextWindow: 128000,
+                maxTokens: 8192
+              }
+            ]
+          }
+        }
+      },
+      agents: {
+        defaults: {
+          model: {
+            primary: "maxapi/YOUR_MODEL_ID"
+          }
+        }
+      }
+    }
+    ```
+
+    <Note>
+      `contextWindow` 和 `maxTokens` 应按所选模型的实际上限调整。如果模型支持图片输入，请把 `input` 改为 `["text", "image"]`。
+    </Note>
+  </Step>
+
+  <Step title="验证配置">
+    检查模型状态，然后将 MaxAPI 模型设为默认模型。
+
+    ```bash
+    openclaw models status
+    openclaw models list
+    openclaw models set maxapi/YOUR_MODEL_ID
+    ```
+  </Step>
+</Steps>
+
+## 故障排查
+
+<AccordionGroup>
+  <Accordion title="提示 Invalid API key">
+    检查 `MAXAPI_API_KEY` 是否在启动 OpenClaw 的同一终端或服务环境中可用。确认 Key 未被撤销。
+  </Accordion>
+  <Accordion title="提示 Model not found">
+    确认配置中的 `models[].id` 与 MaxAPI 模型列表完全一致，并使用 `maxapi/模型ID` 的格式选择模型。
+  </Accordion>
+  <Accordion title="请求返回 400">
+    确认供应商的 `api` 设置为 `openai-completions`。检查当前模型是否支持工具调用、图片输入或请求中的其他高级参数。
+  </Accordion>
+  <Accordion title="请求超时">
+    在供应商配置中增加 `timeoutSeconds`。视频、图像和音乐生成应使用对应的异步接口，不要作为普通聊天请求调用。
+  </Accordion>
+</AccordionGroup>
+
+## 相关文档
+
+- [OpenClaw 模型供应商配置](https://docs.openclaw.ai/zh-CN/concepts/model-providers)
+- [MaxAPI 身份认证](/guides/authentication)
+- [MaxAPI API Reference](/api-reference/overview)
